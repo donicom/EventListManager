@@ -1,0 +1,33 @@
+{
+    "name": "dms/phpunit-arraysubset-asserts",
+    "description": "This package provides Array Subset and related asserts once depracated in PHPunit 8",
+    "type": "library",
+    "require": {
+        "phpunit/phpunit": "^8.4",
+        "php": "^7.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rafael Dohms",
+            "email": "rdohms@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "dms/coding-standard": "^1.0",
+        "squizlabs/php_codesniffer": "^3.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "DMS\\PHPUnitExtensions\\ArraySubset\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DMS\\PHPUnitExtensions\\ArraySubset\\Tests\\": "tests"
+        },
+        "classmap": [
+            "vendor/phpunit/phpunit/tests/"
+        ]
+    }
+}
