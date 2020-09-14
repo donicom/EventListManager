@@ -1,6 +1,6 @@
 # EventListManager
 ----
-Telegram Bot for managing Events written in PHP using [php-telegram-bot/core](https://github.com/php-telegram-bot/core) and include an inline calendar. The data of events are stored in a MySql Database.
+Telegram Bot for managing Events written in PHP using [php-telegram-bot/core](https://github.com/php-telegram-bot/core) including an inline calendar to insert the event date and time. You need a MySql Database instance to store the events data.
 
 # Configuration
 ----
