@@ -29,7 +29,7 @@ class BacktominuteCommand extends SystemCommand
     /**
      * @var string
      */
-    protected $description = 'Ritorno all\'inserimento dei minuti';
+    protected $description = 'Back to set event minute';
     /**
      * @var string
      */

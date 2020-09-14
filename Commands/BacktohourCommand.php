@@ -29,7 +29,7 @@ class BacktohourCommand extends SystemCommand
     /**
      * @var string
      */
-    protected $description = 'Ritorno all\'inserimento dell\'ora';
+    protected $description = 'Back to set event hour';
     /**
      * @var string
      */

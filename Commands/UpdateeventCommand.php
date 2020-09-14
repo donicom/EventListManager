@@ -35,7 +35,7 @@ class UpdateeventCommand extends SystemCommand
     /**
      * @var string
      */
-    protected $description = 'Aggiornamento dati evento';
+    protected $description = 'Save event data';
     /**
      * @var string
      */
@@ -68,11 +68,11 @@ class UpdateeventCommand extends SystemCommand
         $user_id = $user->getId();
         
         $data = LastInputCommandDB::getLIC($chat_id);
-        $d = explode("/", $data["Data"]);
+        $d = explode("/", $data['Date']);
 
         if (EventDB::updateEvent([
                 'chat_id' => $chat_id,
-                'date' => $d[2] . '-' . $d[1] . '-' . $d[0] . ' ' . $data['Ora'] . ':' . $data['Minuti'] . ':00',
+                'date' => $d[2] . '-' . $d[1] . '-' . $d[0] . ' ' . $data['Hour'] . ':' . $data['Minute'] . ':00',
                 'name' => '',
                 'description' => $text
             ],
@@ -85,7 +85,7 @@ class UpdateeventCommand extends SystemCommand
 
             $results = Request::sendToActiveChats(
                 'sendMessage',     //callback function to execute (see Request.php methods)
-                ['text' => 'Un evento è stato modificato /list'], //Param to evaluate the request
+                ['text' => EVENT_UPDATED], //Param to evaluate the request
                 [
                     'groups'      => false,
                     'supergroups' => false,
@@ -94,7 +94,6 @@ class UpdateeventCommand extends SystemCommand
                 ],
                 $user_id
             );
-            // Helper::sendMessage('Un evento è stato modificato /list');
 
             $list = new ListCommand($this->telegram, $this->update);
             return $list->execute();

@@ -34,7 +34,7 @@ class DeleteeventCommand extends SystemCommand
     /**
      * @var string
      */
-    protected $description = 'Cancellazione evento';
+    protected $description = 'Delete evento';
     /**
      * @var string
      */
@@ -68,7 +68,7 @@ class DeleteeventCommand extends SystemCommand
 
         $results = Request::sendToActiveChats(
             'sendMessage',     //callback function to execute (see Request.php methods)
-            ['text' => 'Un evento è stato eliminato /list'], //Param to evaluate the request
+            ['text' => EVENT_DELETED], //Param to evaluate the request
             [
                 'groups'      => false,
                 'supergroups' => false,
@@ -77,11 +77,10 @@ class DeleteeventCommand extends SystemCommand
             ],
             $user_id
         );
-        // Helper::sendMessage('Un evento è stato eliminato /list');
 
         $events = EventDB::listEvents($chat_id);
         $keyboard = new InlineKeyboard([]);
-        $new_button = [ 'text' =>  Emoji::CHARACTER_PLUS_SIGN . "  Nuovo evento", 'callback_data' => 'NEWEVENT' ];
+        $new_button = [ 'text' =>  Emoji::CHARACTER_PLUS_SIGN . " " . NEW_EVENT, 'callback_data' => 'NEWEVENT' ];
 
         $data = [
             'chat_id' => $chat_id,
@@ -89,12 +88,12 @@ class DeleteeventCommand extends SystemCommand
         ];
 
         if(count($events) == 0) {
-            $data['text'] = 'Non ci sono eventi programmati.';
+            $data['text'] = NO_EVENTS;
             if($this->telegram->isAdmin($user_id)) {
                 $keyboard->addRow($new_button);
             }
         } else {
-            $data['text'] = 'Elenco degli eventi:';
+            $data['text'] = EVENTS_LIST;
             $buttons = [];
             setlocale(LC_ALL, "ita", "it_IT", "it-IT", "Italian_Standard.1252");
             foreach ($events as $event) {

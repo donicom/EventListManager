@@ -30,7 +30,7 @@ class NeweventCommand extends SystemCommand
     /**
      * @var string
      */
-    protected $description = 'Inizio creazione evento con richiesta della data';
+    protected $description = 'Insert new event';
     /**
      * @var string
      */
@@ -55,7 +55,7 @@ class NeweventCommand extends SystemCommand
         LastInputCommandDB::addLIC($chat_id, ['Command' =>  'createevent']);
         return Request::sendMessage([
             'chat_id' => $chat_id,
-            'text' => 'Inserisci la data dell\'evento:',
+            'text' => SET_EVENT_DATE,
             'reply_markup' => Calendar::CreateCalendar()
         ]);
     }

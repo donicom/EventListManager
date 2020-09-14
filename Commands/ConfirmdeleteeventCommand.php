@@ -33,7 +33,7 @@ class ConfirmdeleteeventCommand extends SystemCommand
     /**
      * @var string
      */
-    protected $description = 'Cancellazione evento';
+    protected $description = 'Delete evento';
     /**
      * @var string
      */
@@ -68,7 +68,7 @@ class ConfirmdeleteeventCommand extends SystemCommand
         
         $data = [
             'chat_id'      => $chat_id,
-            'text'         => 'Vuoi eliminare l\'evento?',
+            'text'         => DELETE_CONFIRM,
             'reply_markup' => $keyboard
         ];
         return Request::sendMessage($data);

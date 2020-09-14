@@ -35,7 +35,7 @@ class DescriptionCommand extends SystemCommand
     /**
      * @var string
      */
-    protected $description = 'Inserimento minuti dell\'evento';
+    protected $description = 'Set event\'s minute';
     /**
      * @var string
      */
@@ -66,7 +66,7 @@ class DescriptionCommand extends SystemCommand
         $callback_data = Helper::separate_callback_data($callback_query->getData());
         
         $data = LastInputCommandDB::getLIC($chat_id);
-        $data['Minuti'] = str_pad($callback_data[1], 2, '0', STR_PAD_LEFT);
+        $data['Minute'] = str_pad($callback_data[1], 2, '0', STR_PAD_LEFT);
         LastInputCommandDB::addLIC($chat_id, $data);
         
         $conversation = new Conversation($user_id, $chat_id, $data['Command']);
@@ -74,8 +74,8 @@ class DescriptionCommand extends SystemCommand
         return Request::editMessageText([
             'chat_id' => $chat_id,
             'message_id' => $msg_id,
-            'text' => 'Data: ' . $data['Data'] . ' ' . $data['Ora'] . ':' . $data['Minuti'] . PHP_EOL . 'Inserire la descrizione dell\'evento',
-            'reply_markup' => new InlineKeyboard([['text' => Emoji::CHARACTER_LEFT_ARROW . ' Modifica Minuti', 'callback_data' => 'BACKTOMINUTE']])
+            'text' => DATE . ' ' . $data['Date'] . ' ' . $data['Hour'] . ':' . $data['Minute'] . PHP_EOL . SET_EVENT_DESC,
+            'reply_markup' => new InlineKeyboard([['text' => Emoji::CHARACTER_LEFT_ARROW . ' ' . BACK, 'callback_data' => 'BACKTOMINUTE']])
         ]);
     }
 }

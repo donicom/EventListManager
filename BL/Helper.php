@@ -19,7 +19,7 @@ class Helper
             $chats = array_map(function ($u) {
                 return $u->id;
             }, $users);
-        $website="https://api.telegram.org/bot935812130:AAEUVIH4xDfOQJPv4mhUx3PBjj-Nqw4lBBE";
+        $website="your:bot_api_key";
         $params=[                
             'text'=> $msg,
         ];

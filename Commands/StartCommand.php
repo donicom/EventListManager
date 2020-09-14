@@ -26,7 +26,7 @@ class StartCommand extends SystemCommand
     /**
      * @var string
      */
-    protected $description = 'Comando start';
+    protected $description = 'Start command';
  
     /**
      * @var string
@@ -54,7 +54,7 @@ class StartCommand extends SystemCommand
         $message = $this->getMessage();
         $name = $message->getFrom()->getFirstName() . ' ' . $message->getFrom()->getLastName();
         $chat_id = $message->getChat()->getId();
-        $text    = "Ciao {$name}," . PHP_EOL . "invia il comando /help per visualizzare l'elenco dei comandi!";
+        $text    = HI . " {$name}," . PHP_EOL . START_MSG;
         $data = [
             'chat_id' => $chat_id,
             'text'    => $text,

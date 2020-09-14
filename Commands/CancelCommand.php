@@ -28,7 +28,7 @@ class CancelCommand extends SystemCommand
     /**
      * @var string
      */
-    protected $description = 'Annullamento inserimento o modifica evento';
+    protected $description = 'Cancel insert or update event';
     /**
      * @var string
      */

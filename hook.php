@@ -10,25 +10,23 @@
  */
 // Load composer
 require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/lang/en.php';
 // Add you bot's API key and name
-$bot_api_key  = '935812130:AAEUVIH4xDfOQJPv4mhUx3PBjj-Nqw4lBBE';
-$bot_username = 'nemttbot';
+$bot_api_key  = 'your:bot_api_key';
+$bot_username = 'username_bot';
 // Define all IDs of admin users in this array (leave as empty array if not used)
 $admin_users = [
-    166754901,
-    947252868
 ];
 // Define all paths for your custom commands in this array (leave as empty array if not used)
 $commands_paths = [
     __DIR__ . '/Commands/',
-    // __DIR__ . '/Commands2/',
 ];
 // Enter your MySQL database credentials
 $mysql_credentials = [
-    'host'     => 'localhost',
-    'user'     => 'eventlistmanager',
-    'password' => '',
-    'database' => 'my_eventlistmanager',
+    'host'     => 'host',
+    'user'     => 'username',
+    'password' => 'password',
+    'database' => 'db_name',
 ];
 
 try {

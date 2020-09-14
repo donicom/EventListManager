@@ -1,0 +1,26 @@
+<?php
+define("LANG_CODE", "List all events");
+define("LIST_CMD_DESC", "List all events");
+define("HELP_CMD_DESC", "List bot commands");
+define("SENDTOALL_CMD_DESC", "Send a message to all users subscribed to bot");
+define("EVENTS_LIST", "Events list:");
+define("NO_EVENTS", "No events");
+define("NEW_EVENT", "Add new event");
+define("UPDATE_EVENT", "Update event");
+define("DEL_EVENT", "Delete event");
+define("SET_EVENT_DATE", "Set event's date:");
+define("SET_EVENT_HOUR", "Set hour:");
+define("SET_EVENT_MINUTE", "Set minute:");
+define("SET_EVENT_DESC", "Type event description:");
+define("BACK", " Back");
+define("DATE", "Date:");
+define("HOUR", "Hour:");
+define("HI", "Hi");
+define("START_MSG", "Send /help command to list all bot commands.");
+define("ENROLLED", "Enrolled users:");
+define("REGISTER", "Take part");
+define("UNREGISTER", "Unsubscribe");
+define("DELETE_CONFIRM", "Confirm deleting?");
+define("EVENT_PUBLISHED", "New event was published, type /list");
+define("EVENT_DELETED", "An event was deleted, type /list");
+define("EVENT_UPDATED", "An event was updated, type /list");

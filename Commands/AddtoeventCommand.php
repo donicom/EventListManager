@@ -31,7 +31,7 @@ class AddtoeventCommand extends SystemCommand
     /**
      * @var string
      */
-    protected $description = 'Aggiungi partecipazione utente ad evento';
+    protected $description = 'Sign up user to event';
     /**
      * @var string
      */
@@ -65,7 +65,7 @@ class AddtoeventCommand extends SystemCommand
         $event = ModelsEventDB::getEvent($event_id);
 
         setlocale(LC_ALL, "ita", "it_IT", "it-IT", "Italian_Standard.1252");
-        $data['text'] = "<b>" . (new DateTime($event->date))->format('d/m/Y D H:i') . " - " .  $event->description . "</b>" . PHP_EOL . "Elenco partecipanti:";
+        $data['text'] = "<b>" . (new DateTime($event->date))->format('d/m/Y D H:i') . " - " .  $event->description . "</b>" . PHP_EOL . ENROLLED;
 
         $users = ParticipantDB::listParticipants($event_id);
         $data['text'] .= PHP_EOL . PHP_EOL . join(
@@ -80,7 +80,7 @@ class AddtoeventCommand extends SystemCommand
         );   
         
         $keyboard = new InlineKeyboard([]);
-        $keyboard->addRow([ 'text' =>  Emoji::CHARACTER_CROSS_MARK . " Annulla partecipazione", 'callback_data' => 'REMOVETOEVENT|' . $event_id  ]);
+        $keyboard->addRow([ 'text' =>  Emoji::CHARACTER_CROSS_MARK . ' ' . UNREGISTER, 'callback_data' => 'REMOVETOEVENT|' . $event_id  ]);
         $data['reply_markup'] = $keyboard;
         return Request::editMessageText($data);
     }

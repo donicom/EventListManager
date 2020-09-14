@@ -60,12 +60,12 @@ class HourCommand extends SystemCommand
         
         $data = LastInputCommandDB::getLIC($chat_id);
         $date = str_pad($callback_data[3], 2, '0', STR_PAD_LEFT) . "/" . str_pad($callback_data[2], 2, '0', STR_PAD_LEFT). "/" .str_pad($callback_data[1], 2, '0', STR_PAD_LEFT);
-        $data['Data'] = $date;
+        $data['Date'] = $date;
         LastInputCommandDB::addLIC($chat_id, $data);
         return Request::editMessageText([
             'chat_id' => $chat_id,
             'message_id' => $msg_id,
-            'text' => 'Data: ' . $date . PHP_EOL . 'Insersci l\'ora:',
+            'text' => DATE . ' ' . $date . PHP_EOL . SET_EVENT_HOUR,
             'reply_markup' => Calendar::CreateHours()
         ]);
     }

@@ -32,7 +32,7 @@ class ParticipantsCommand extends SystemCommand
     /**
      * @var string
      */
-    protected $description = 'Elenca i partecipanti di un evento';
+    protected $description = 'List subscribed users';
     /**
      * @var string
      */
@@ -62,7 +62,7 @@ class ParticipantsCommand extends SystemCommand
         ];
 
         setlocale(LC_ALL, "ita", "it_IT", "it-IT", "Italian_Standard.1252");
-        $data['text'] = "<b>" . (new DateTime($event->date))->format('d/m/Y D H:i') . " - " .  $event->description . "</b>" . PHP_EOL . "Elenco partecipanti:";
+        $data['text'] = "<b>" . (new DateTime($event->date))->format('d/m/Y D H:i') . " - " .  $event->description . "</b>" . PHP_EOL . ENROLLED;
 
         $users = ParticipantDB::listParticipants($event_id);
         $data['text'] .= PHP_EOL . PHP_EOL . join(
@@ -79,8 +79,8 @@ class ParticipantsCommand extends SystemCommand
         $keyboard = new InlineKeyboard([]);
         if($this->telegram->isAdmin($user_id)) {
             $keyboard->addRow(
-                [ 'text' =>  Emoji::CHARACTER_PENCIL . "  Modifica evento", 'callback_data' => 'MODIFYEVENT|' . $event_id  ],
-                [ 'text' =>  Emoji::CHARACTER_CROSS_MARK . "  Elimina evento", 'callback_data' => 'CONFIRMDELETEEVENT|' . $event_id  ]
+                [ 'text' =>  Emoji::CHARACTER_PENCIL . " " . UPDATE_EVENT, 'callback_data' => 'MODIFYEVENT|' . $event_id  ],
+                [ 'text' =>  Emoji::CHARACTER_CROSS_MARK . " " . DEL_EVENT, 'callback_data' => 'CONFIRMDELETEEVENT|' . $event_id  ]
             );
         } else {
 
@@ -88,11 +88,11 @@ class ParticipantsCommand extends SystemCommand
                 return $v->id == $user_id;
             }, ARRAY_FILTER_USE_BOTH)) == 0) {
                 $keyboard->addRow(
-                    [ 'text' =>  Emoji::CHARACTER_PLUS_SIGN . " Partecipa", 'callback_data' => 'ADDTOEVENT|' . $event_id  ],
+                    [ 'text' =>  Emoji::CHARACTER_PLUS_SIGN . " " . REGISTER, 'callback_data' => 'ADDTOEVENT|' . $event_id  ],
                 );
             } else {
                 $keyboard->addRow(
-                    [ 'text' =>  Emoji::CHARACTER_CROSS_MARK . " Annulla partecipazione", 'callback_data' => 'REMOVETOEVENT|' . $event_id  ]
+                    [ 'text' =>  Emoji::CHARACTER_CROSS_MARK . " " . UNREGISTER, 'callback_data' => 'REMOVETOEVENT|' . $event_id  ]
                 );
             }
         }

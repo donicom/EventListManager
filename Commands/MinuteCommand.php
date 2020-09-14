@@ -31,7 +31,7 @@ class MinuteCommand extends SystemCommand
     /**
      * @var string
      */
-    protected $description = 'Inserimento dei minuti';
+    protected $description = 'Set event minute';
     /**
      * @var string
      */
@@ -59,13 +59,13 @@ class MinuteCommand extends SystemCommand
         $callback_data = Helper::separate_callback_data($callback_query->getData());
         
         $data = LastInputCommandDB::getLIC($chat_id);
-        $data['Ora'] = str_pad($callback_data[1], 2, '0', STR_PAD_LEFT);
+        $data['Hour'] = str_pad($callback_data[1], 2, '0', STR_PAD_LEFT);
         LastInputCommandDB::addLIC($chat_id, $data);
 
         return Request::editMessageText([
             'chat_id' => $chat_id,
             'message_id' => $msg_id,
-            'text' => 'Data: ' . $data['Data'] . ' Ora: ' . $data['Ora'] . PHP_EOL . 'Insersci i minuti:',
+            'text' => 'Data: ' . $data['Date'] . ' ' . HOUR . ' ' . $data['Hour'] . PHP_EOL . SET_EVENT_MINUTE,
             'reply_markup' => Calendar::CreateMinutes()
         ]);
     }

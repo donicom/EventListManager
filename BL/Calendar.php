@@ -24,7 +24,7 @@ class Calendar
         }
         $keyboard->addRow(...$row);
         $keyboard->addRow(
-            ['text' => Emoji::CHARACTER_LEFT_ARROW . ' Modifica Data', 'callback_data' => 'BACKTODATE']
+            ['text' => Emoji::CHARACTER_LEFT_ARROW .  ' ' . BACK, 'callback_data' => 'BACKTODATE']
         );
         return $keyboard;
     }
@@ -43,7 +43,7 @@ class Calendar
         }
         $keyboard->addRow(...$row);
         $keyboard->addRow(
-            ['text' => Emoji::CHARACTER_LEFT_ARROW . ' Modifica Ora', 'callback_data' => 'BACKTOHOUR']
+            ['text' => Emoji::CHARACTER_LEFT_ARROW . ' ' . BACK, 'callback_data' => 'BACKTOHOUR']
         );
         return $keyboard;
     }

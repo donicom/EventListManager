@@ -31,7 +31,7 @@ class SuccmonthCommand extends SystemCommand
     /**
      * @var string
      */
-    protected $description = 'Spostamento mese precedente o successivo';
+    protected $description = 'Move to next or previous month in calendar';
     /**
      * @var string
      */

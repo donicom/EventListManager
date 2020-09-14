@@ -35,7 +35,7 @@ class CreateeventCommand extends SystemCommand
     /**
      * @var string
      */
-    protected $description = 'Inserimento descrizione evento';
+    protected $description = 'Insert event description text';
     /**
      * @var string
      */
@@ -68,10 +68,10 @@ class CreateeventCommand extends SystemCommand
         $user_id = $user->getId();
         
         $data = LastInputCommandDB::getLIC($chat_id);
-        $d = explode("/", $data["Data"]);
+        $d = explode("/", $data['Date']);
         if (EventDB::insertEvent(
             $chat_id,
-            $d[2] . '-' . $d[1] . '-' . $d[0] . ' ' . $data['Ora'] . ':' . $data['Minuti'] . ':00',
+            $d[2] . '-' . $d[1] . '-' . $d[0] . ' ' . $data['Hour'] . ':' . $data['Minute'] . ':00',
             '',
             $text
         )) {
@@ -80,7 +80,7 @@ class CreateeventCommand extends SystemCommand
 
             $results = Request::sendToActiveChats(
                 'sendMessage',     //callback function to execute (see Request.php methods)
-                ['text' => 'E\' stato pubblicato un nuovo evento /list'], //Param to evaluate the request
+                ['text' => EVENT_PUBLISHED], //Param to evaluate the request
                 [
                     'groups'      => false,
                     'supergroups' => false,
@@ -89,7 +89,6 @@ class CreateeventCommand extends SystemCommand
                 ],
                 $user_id
             );
-            // Helper::sendMessage('E\' stato pubblicato un nuovo evento /list');
 
             $list = new ListCommand($this->telegram, $this->update);
             return $list->execute();

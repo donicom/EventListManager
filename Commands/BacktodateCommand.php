@@ -30,7 +30,7 @@ class BacktodateCommand extends SystemCommand
     /**
      * @var string
      */
-    protected $description = 'Ritorno all\'inserimento della data';
+    protected $description = 'Back to set event date';
     /**
      * @var string
      */
@@ -56,11 +56,11 @@ class BacktodateCommand extends SystemCommand
         $chat_id =  $message->getChat()->getId();
         $msg_id =  $message->message_id;
         $data = LastInputCommandDB::getLIC($chat_id);
-        $d = explode("/", $data["Data"]);
+        $d = explode("/", $data['Date']);
         return Request::editMessageText([
             'chat_id' => $chat_id,
             'message_id' => $msg_id,
-            'text' => 'Inserisci la data dell\'evento',
+            'text' => SET_EVENT_DATE,
             'reply_markup' => Calendar::CreateCalendar($d[2], $d[1])
         ]);
     }

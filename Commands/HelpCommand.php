@@ -25,7 +25,7 @@ class HelpCommand extends UserCommand
     /**
      * @var string
      */
-    protected $description = 'Elenca i comandi del bot';
+    protected $description = 'List bot commands';
     /**
      * @var string
      */
@@ -52,7 +52,7 @@ class HelpCommand extends UserCommand
         list($all_commands, $user_commands, $admin_commands) = $this->getUserAdminCommands();
         // If no command parameter is passed, show the list.
         if ($command_str === '') {
-            $data['text'] = '*Lista dei comandi*:' . PHP_EOL;
+            $data['text'] = '*'.HELP_CMD_DESC.'*:' . PHP_EOL;
             foreach ($user_commands as $user_command) {
                 $data['text'] .= '/' . $user_command->getName() . ' - ' . $user_command->getDescription() . PHP_EOL;
             }

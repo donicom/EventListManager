@@ -31,7 +31,7 @@ class ModifyeventCommand extends SystemCommand
     /**
      * @var string
      */
-    protected $description = 'Modifica evento';
+    protected $description = 'Update evento';
     /**
      * @var string
      */
@@ -60,7 +60,7 @@ class ModifyeventCommand extends SystemCommand
         LastInputCommandDB::addLIC($chat_id, ['Command' =>  'updateevent', 'EventId' => $event_id]);
         return Request::sendMessage([
             'chat_id' => $chat_id,
-            'text' => 'Inserisci la data dell\'evento:',
+            'text' => SET_EVENT_DATE,
             'reply_markup' => Calendar::CreateCalendar()
         ]);
     }
