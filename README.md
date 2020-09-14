@@ -29,7 +29,7 @@ $bot_api_key  = 'your:bot_api_key';
 $bot_username = 'username_bot';
 $hook_url     = 'https://your-domain/path/to/hook.php'; 
 ```
-Set your bot api key in the file /BL/Helper.php to use the `/sendtoall` command . 
+Set your bot api key in the file /BL/Helper.php to use the `/sendtoall` admin command . 
 ```
 $website="your:bot_api_key";
 ```
